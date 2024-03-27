@@ -1,6 +1,7 @@
 namespace ConsoleApp2.Exception;
 
-public class IHazardNotifier
+
+public interface IHazardNotifier
 {
-    
+    void NotifyHazard();
 }
