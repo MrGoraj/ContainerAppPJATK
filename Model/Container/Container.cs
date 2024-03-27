@@ -4,12 +4,12 @@ namespace ConsoleApp2.Model;
 
 public class Container
 {
-    private static int _lastSerialNumber = 0;
-    public double LoadMass { get; set; }
+    private static int _lastSerialNumber;
+    public double LoadMass { get; protected set; }
     public double Height { get; set; }
     public double OwnWeight { get; set; }
     public double Depth { get; set; }
-    public string SerialNumber { get; private set; }
+    protected string SerialNumber { get; private set; }
     public double MaxLoadCapacity { get; set; }
 
     public Container(double loadMass, double height, double ownWeight, double depth, double maxLoadCapacity)
@@ -20,6 +20,11 @@ public class Container
         Depth = depth;
         MaxLoadCapacity = maxLoadCapacity;
         SerialNumber = GenerateSerialNumber();
+    }
+    
+    public static Container CreateContainer(double loadMass, double height, double ownWeight, double depth, double maxLoadCapacity)
+    {
+        return new Container(loadMass, height, ownWeight, depth, maxLoadCapacity);
     }
 
     private string GenerateSerialNumber()
